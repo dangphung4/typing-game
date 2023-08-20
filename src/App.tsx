@@ -1,11 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
+import { faker } from "@faker-js/faker";
 
+const words = faker.word.words(10);
 
 function App() {
   return (
-    <div className='texl-4xl text-center text-blue-500'>
-     It works
+    <div className="text-4xl text-center text-#f8f8f2">
+     {words}
     </div>
   );
 }
