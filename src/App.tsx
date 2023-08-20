@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+
 
 function App() {
   return (
-    <div>
-     
+    <div className='texl-4xl text-center text-blue-500'>
+     It works
     </div>
   );
 }
