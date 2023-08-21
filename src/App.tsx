@@ -14,7 +14,6 @@ function App() {
     <GeneratedWords words={words}/>
     <UserTypings className="absolute inset-0" userInput={words}/>
   </div>
-  <GeneratedWords words={words} />
   <RestartButton className={"mx-auto mt-10 text-pink"}
   onRestart={() => null}/>
   <Results
@@ -27,7 +26,7 @@ function App() {
 }
 
 const GeneratedWords = ({ words }: { words: string }) => {
-  return <div className="text-4xl text-center text-light">{words}</div>;
+  return <div className="text-light">{words}</div>;
 };
 
 const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
