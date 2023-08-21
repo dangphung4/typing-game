@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import RestartButton from "./components/RestartButton";
 
 const words = faker.word.words(10);
 
@@ -8,6 +9,7 @@ function App() {
   <>
   <CountdownTimer timeLeft={30}/>
   <GeneratedWords words={words} />
+ 
   </>
   )
 }
