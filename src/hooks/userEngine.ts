@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import useWords from "./useWords";
 
 
 export type State = "start" | "run" | "finish";
@@ -8,8 +9,9 @@ const COUNTDOWN_SECONDS = 30;
 
 const useEngine = () =>{
     const [state, setState] = useState<State>("start");
+    const {words, updateWords} = useWords(NUMBER_OF_WORDS);
 
-    return {state};
+    return {state, words};
 }
 
 export default useEngine;
