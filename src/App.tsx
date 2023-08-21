@@ -9,6 +9,8 @@ function App() {
   <>
   <CountdownTimer timeLeft={30}/>
   <GeneratedWords words={words} />
+  <RestartButton className={"mx-auto mt-10 text-pink"}
+  onRestart={() => null}/>
  
   </>
   )
