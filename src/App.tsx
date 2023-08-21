@@ -3,11 +3,21 @@ import { faker } from "@faker-js/faker";
 const words = faker.word.words(10);
 
 function App() {
+  
   return (
-    <div className="text-4xl text-center text-#f8f8f2">
-     {words}
-    </div>
-  );
+  <>
+  <CountdownTimer timeLeft={30}/>
+  <GeneratedWords words={words} />
+  </>
+  )
 }
+
+const GeneratedWords = ({ words }: { words: string }) => {
+  return <div className="text-4xl text-center text-light">{words}</div>;
+};
+
+const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
+  return <h2 className="text-primary-400 font-medium">Time: {timeLeft}</h2>;
+}; 
 
 export default App;
