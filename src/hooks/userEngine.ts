@@ -3,7 +3,6 @@ import { countErrors } from "../ultils/helpers";
 import useWords from "./useWords";
 import useCountDownTimer from "./useCountDownTimer";
 import useTypings from "./useTypings";
-import { clear } from "@testing-library/user-event/dist/clear";
 
 export type State = "start" | "run" | "finish";
 
@@ -29,6 +28,20 @@ const useEngine = () => {
     setErrors((prevErrors) => prevErrors + countErrors(typed, wordsReached));
   }, [typed, words, cursor]);
 
+  //regenerate screen and words once all words are filled up
+  useEffect(() => {
+    if (areWordsFinished) {
+      sumErrors();
+      updateWords();
+      clearTyped();
+    }
+  }, [
+    clearTyped,
+    areWordsFinished,
+    updateWords,
+    sumErrors,
+  ]);
+
   //change from start to run upon keystroke
   useEffect(() => {
     if (isStarting) {
@@ -45,27 +58,9 @@ const useEngine = () => {
     }
   }, [timeLeft, sumErrors]);
 
-  //regenerate screen and words once all words are filled up
-  useEffect(() => {
-    if (areWordsFinished) {
-      console.log("Words are finished!");
-      sumErrors();
-      updateWords();
-      clearTyped();
-    }
-  }, [
-    cursor,
-    words,
-    clearTyped,
-    typed,
-    areWordsFinished,
-    updateWords,
-    sumErrors,
-  ]);
 
   const restart = useCallback(() =>{
-    console.log("Restarting!");;
-    resetCountdown;
+    resetCountdown();
     resetTotalTyped();
     setState("start");
     setErrors(0);
