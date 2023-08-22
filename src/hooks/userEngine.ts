@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { countErrors } from "../ultils/helpers"
 import useWords from "./useWords";
 import useCountDownTimer from "./useCountDownTimer";
 import useTypings from "./useTypings";
@@ -16,6 +17,8 @@ const useEngine = () => {
   const { typed, cursor, clearTyped, resetTotalTyped, totalTyped } = useTypings(
     state !== "finish"
   );
+
+  
 
   return { state, words, timeLeft, typed };
 };
