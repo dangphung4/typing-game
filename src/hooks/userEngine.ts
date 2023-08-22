@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { countErrors } from "../ultils/helpers"
+import { countErrors } from "../ultils/helpers";
 import useWords from "./useWords";
 import useCountDownTimer from "./useCountDownTimer";
 import useTypings from "./useTypings";
@@ -21,28 +21,46 @@ const useEngine = () => {
   const [errors, setErrors] = useState(0);
 
   const isStarting = state === "start" && cursor > 0;
+  const areWordsFinished = cursor === words.length;
 
   const sumErrors = useCallback(() => {
-    const wordsReached = words.substring(0,cursor);
-    setErrors((prevErrors) => prevErrors + countErrors(typed,wordsReached));
-  }, [typed, words, cursor])
+    const wordsReached = words.substring(0, cursor);
+    setErrors((prevErrors) => prevErrors + countErrors(typed, wordsReached));
+  }, [typed, words, cursor]);
 
   //change from start to run upon keystroke
-  useEffect(()=>{
-    if (isStarting){
-        setState("run");
-        startCountdown();
+  useEffect(() => {
+    if (isStarting) {
+      setState("run");
+      startCountdown();
     }
   }, [isStarting, startCountdown, cursor]);
 
   // finish when time is up
   useEffect(() => {
-    if (!timeLeft){
-        console.log("Time!");
-        setState("finish");
+    if (!timeLeft) {
+      console.log("Time!");
+      setState("finish");
     }
+  }, [timeLeft, sumErrors]);
 
-  }, [timeLeft, sumErrors])
+  //regenerate screen and words once all words are filled up
+  useEffect(() => {
+    if (areWordsFinished) {
+      console.log("Words are finished!");
+      sumErrors();
+      updateWords();
+      clearTyped();
+    }
+  }, [
+    cursor,
+    words,
+    clearTyped,
+    typed,
+    areWordsFinished,
+    updateWords,
+    sumErrors,
+  ]);
 
   return { state, words, timeLeft, typed };
 };
