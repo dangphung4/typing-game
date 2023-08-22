@@ -8,6 +8,7 @@ const isKeyboardCodeAllowed = (code: string) => {
     code === "Space"
   );
 };
+
 const useTypings = (enabled: boolean) => {
   const [cursor, setCursor] = useState(0);
   const [typed, setTyped] = useState<string>("");
@@ -61,4 +62,5 @@ const useTypings = (enabled: boolean) => {
     totalTyped: totalTyped.current,
   };
 };
+
 export default useTypings;

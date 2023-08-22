@@ -19,11 +19,10 @@ const useCountDownTimer = (seconds: number) => {
     setTimeLeft(seconds);
   }, [seconds]);
   useEffect(() => {
-
-    if(!timeLeft && intervalRef.current){
-        clearInterval(intervalRef.current);
+    if (!timeLeft && intervalRef.current) {
+      clearInterval(intervalRef.current);
     }
-  }, [timeLeft,intervalRef]);
+  }, [timeLeft, intervalRef]);
 
   return { timeLeft, startCountdown, resetCountdown };
 };

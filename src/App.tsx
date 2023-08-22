@@ -5,7 +5,8 @@ import useEngine from "./hooks/userEngine";
 import { calculateAccuracyPercentage } from "./ultils/helpers";
 
 function App() {
-  const { state, words, timeLeft, typed, errors, restart, totalTyped } = useEngine();
+  const { state, words, timeLeft, typed, errors, restart, totalTyped } =
+    useEngine();
   return (
     <>
       <CountdownTimer timeLeft={timeLeft} />
@@ -22,7 +23,7 @@ function App() {
         onRestart={restart}
       />
       <Results
-      state={state}
+        state={state}
         className="mt-10"
         errors={errors}
         accuracyPercentage={calculateAccuracyPercentage(errors, totalTyped)}
