@@ -8,8 +8,6 @@ const isKeyboardCodeAllowed = (code : string) => {
         code === "Space"
     );
 }
-
-
 const useTypings = (enabled: boolean) => {
   const [cursor, setCursor] = useState(0);
   const [typed, setTyped] = useState<string>("");
@@ -24,16 +22,16 @@ const useTypings = (enabled: boolean) => {
       switch (key) {
         case "Backspace":
           setTyped((prev) => prev.slice(0, -1));
-          setCursor((cursor) => cursor - 1);
+          setCursor(cursor-1);
           totalTyped.current -= 1;
           break;
         default:
           setTyped((prev) => prev.concat(key));
-          setCursor((cursor) => cursor + 1);
+          setCursor(cursor + 1);
           totalTyped.current += 1;
       }
     },
-    [enabled]
+    [cursor, enabled]
   );
 
   const clearTyped = useCallback(() => {

@@ -6,13 +6,13 @@ import useEngine from "./hooks/userEngine";
 
 
 function App() {
-  const { state, words, timeLeft } = useEngine();
+  const { state, words, timeLeft, typed} = useEngine();
   return (
   <>
   <CountdownTimer timeLeft={timeLeft}/>
   <WordsContainer>
     <GeneratedWords words={words}/>
-    <UserTypings className="absolute inset-0" userInput={words}/>
+    <UserTypings className="absolute inset-0" userInput={typed}/>
   </WordsContainer>
   <RestartButton className={"mx-auto mt-10 text-pink"}
   onRestart={() => null}/>
