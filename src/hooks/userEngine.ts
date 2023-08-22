@@ -20,10 +20,17 @@ const useEngine = () => {
 
   const [errors, setErrors] = useState(0);
 
+  const isStarting = state === "start" && cursor > 0;
+
   const sumErrors = useCallback(() => {
     const wordsReached = words.substring(0,cursor);
     setErrors((prevErrors) => prevErrors + countErrors(typed,wordsReached));
   }, [typed, words, cursor])
+
+  //change from start to run upon keystroke
+  useEffect(()=>{
+    
+  }, [isStarting, startCountdown, cursor]);
 
   return { state, words, timeLeft, typed };
 };
