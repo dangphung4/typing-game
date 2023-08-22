@@ -4,25 +4,31 @@ import Results from "./components/Results";
 import UserTypings from "./components/UserTypings";
 import useEngine from "./hooks/userEngine";
 
-
 function App() {
-  const { state, words, timeLeft, typed} = useEngine();
+  const { state, words, timeLeft, typed } = useEngine();
   return (
-  <>
-  <CountdownTimer timeLeft={timeLeft}/>
-  <WordsContainer>
-    <GeneratedWords words={words}/>
-    <UserTypings className="absolute inset-0" userInput={typed}/>
-  </WordsContainer>
-  <RestartButton className={"mx-auto mt-10 text-pink"}
-  onRestart={() => null}/>
-  <Results
-    className="mt-10"
-    errors={10}
-    accuracyPercentage={100}
-    total={200}/>
-  </>
-  )
+    <>
+      <CountdownTimer timeLeft={timeLeft} />
+      <WordsContainer>
+        <GeneratedWords words={words} />
+        <UserTypings
+          className="absolute inset-0"
+          words={words}
+          userInput={typed}
+        />
+      </WordsContainer>
+      <RestartButton
+        className={"mx-auto mt-10 text-pink"}
+        onRestart={() => null}
+      />
+      <Results
+        className="mt-10"
+        errors={10}
+        accuracyPercentage={100}
+        total={200}
+      />
+    </>
+  );
 }
 
 const WordsContainer = ({ children }: { children: React.ReactNode }) => {
@@ -39,6 +45,6 @@ const GeneratedWords = ({ words }: { words: string }) => {
 
 const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
   return <h2 className="text-purple font-medium">Time: {timeLeft}</h2>;
-}; 
+};
 
 export default App;

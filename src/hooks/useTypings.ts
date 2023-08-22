@@ -31,7 +31,7 @@ const useTypings = (enabled: boolean) => {
           totalTyped.current += 1;
       }
     },
-    [cursor, enabled]
+    [ enabled]
   );
 
   const clearTyped = useCallback(() => {
