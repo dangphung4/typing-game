@@ -41,7 +41,7 @@ const Character = ({
     <span
       className={classNames({
         "text-red": !isCorrect && !isWhiteSpace,
-        "text-yellow": isCorrect && !isWhiteSpace,
+        "text-green": isCorrect && !isWhiteSpace,
         "bg-red": !isCorrect && isWhiteSpace,
       })}
     >

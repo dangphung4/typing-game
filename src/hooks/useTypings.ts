@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const isKeyboardCodeAllowed = (code : string) => {
     return (
-        code.startsWith("key") ||
+        code.startsWith("Key") ||
         code.startsWith("Digit") ||
         code === "Backspace" ||
         code === "Space"
