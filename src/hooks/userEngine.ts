@@ -74,7 +74,7 @@ const useEngine = () => {
 
   }, [clearTyped, updateWords, resetCountdown, resetTotalTyped])
 
-  return { state, words, timeLeft, typed };
+  return { state, words, timeLeft, typed, errors, totalTyped, restart};
 };
 
 export default useEngine;

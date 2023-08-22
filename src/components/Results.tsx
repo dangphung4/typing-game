@@ -7,6 +7,7 @@ const Results = ({
   total,
   className = "",
 }: {
+  state : State
   errors: number;
   accuracyPercentage: number;
   total: number;
