@@ -29,8 +29,20 @@ const useEngine = () => {
 
   //change from start to run upon keystroke
   useEffect(()=>{
-    
+    if (isStarting){
+        setState("run");
+        startCountdown();
+    }
   }, [isStarting, startCountdown, cursor]);
+
+  // finish when time is up
+  useEffect(() => {
+    if (!timeLeft){
+        console.log("Time!");
+        setState("finish");
+    }
+
+  }, [timeLeft, sumErrors])
 
   return { state, words, timeLeft, typed };
 };
