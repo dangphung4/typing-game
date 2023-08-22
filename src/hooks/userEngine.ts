@@ -18,7 +18,12 @@ const useEngine = () => {
     state !== "finish"
   );
 
-  
+  const [errors, setErrors] = useState(0);
+
+  const sumErrors = useCallback(() => {
+    const wordsReached = words.substring(0,cursor);
+    setErrors((prevErrors) => prevErrors + countErrors(typed,wordsReached));
+  }, [typed, words, cursor])
 
   return { state, words, timeLeft, typed };
 };
