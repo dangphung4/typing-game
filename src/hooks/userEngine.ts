@@ -3,6 +3,7 @@ import { countErrors } from "../ultils/helpers";
 import useWords from "./useWords";
 import useCountDownTimer from "./useCountDownTimer";
 import useTypings from "./useTypings";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 export type State = "start" | "run" | "finish";
 
@@ -61,6 +62,17 @@ const useEngine = () => {
     updateWords,
     sumErrors,
   ]);
+
+  const restart = useCallback(() =>{
+    console.log("Restarting!");;
+    resetCountdown;
+    resetTotalTyped();
+    setState("start");
+    setErrors(0);
+    updateWords();
+    clearTyped();
+
+  }, [clearTyped, updateWords, resetCountdown, resetTotalTyped])
 
   return { state, words, timeLeft, typed };
 };
