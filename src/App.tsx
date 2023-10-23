@@ -19,7 +19,7 @@ function App() {
         />
       </WordsContainer>
       <RestartButton
-        className={"mx-auto mt-10 text-pink"}
+        className={"mx-auto mt-10 text-blue"}
         onRestart={restart}
       />
       <Results
